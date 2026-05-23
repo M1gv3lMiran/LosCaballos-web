@@ -447,14 +447,16 @@
 
         .wa-number {
             display: block;
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.1rem, 5vw, 1.55rem);
+            font-family: 'Lato', sans-serif;
+            font-size: clamp(1.2rem, 5vw, 1.7rem);
             font-weight: 700;
             color: var(--gold);
             margin-bottom: 1.8rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             white-space: nowrap;
             word-break: keep-all;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-feature-settings: "lnum" 1, "tnum" 1;
         }
 
         .wa-card .btn-wa {
