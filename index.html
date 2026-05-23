@@ -304,13 +304,7 @@
 
         /* ── CARTA ── */
         .carta-section {
-            background: linear-gradient(to bottom,
-                var(--cream-light) 0%,
-                var(--burgundy-dark) 10%,
-                var(--burgundy) 50%,
-                var(--burgundy-dark) 90%,
-                var(--cream-light) 100%
-            );
+            background: var(--cream-light);
         }
 
         .carta-inner {
@@ -323,25 +317,26 @@
         .carta-text h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
-            color: var(--cream);
+            color: var(--burgundy);
             margin-bottom: 0.6rem;
         }
 
         .carta-text .divider { margin: 0.8rem 0 1.5rem; }
 
         .carta-text p {
-            color: rgba(245,227,176,0.75);
+            color: var(--text-mid);
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 2rem;
         }
 
         .carta-card {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(201,169,110,0.35);
+            background: var(--white);
+            border: 1px solid rgba(107,21,38,0.12);
             border-radius: 14px;
             padding: 2.8rem 2rem;
             text-align: center;
+            box-shadow: 0 4px 24px rgba(107,21,38,0.08);
         }
 
         .carta-card .big-icon {
@@ -352,12 +347,12 @@
         .carta-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: var(--cream);
+            color: var(--burgundy);
             margin-bottom: 0.7rem;
         }
 
         .carta-card p {
-            color: rgba(245,227,176,0.65);
+            color: var(--text-mid);
             font-size: 0.95rem;
             margin-bottom: 1.8rem;
             line-height: 1.6;
@@ -372,9 +367,9 @@
         }
 
         .badge {
-            background: rgba(201,169,110,0.18);
-            color: var(--gold);
-            border: 1px solid rgba(201,169,110,0.4);
+            background: rgba(107,21,38,0.07);
+            color: var(--burgundy);
+            border: 1px solid rgba(107,21,38,0.2);
             border-radius: 20px;
             padding: 0.25rem 0.9rem;
             font-size: 0.8rem;
@@ -472,7 +467,7 @@
         .footer {
             background: linear-gradient(to bottom,
                 var(--cream-light) 0%,
-                var(--burgundy-dark) 12%,
+                var(--burgundy-dark) 10%,
                 var(--burgundy-dark) 100%
             );
             color: var(--cream);
@@ -547,6 +542,42 @@
             0%   { box-shadow: 0 4px 18px rgba(74,14,26,0.35); }
             50%  { box-shadow: 0 4px 28px rgba(74,14,26,0.5), 0 0 0 10px rgba(201,169,110,0.2); }
             100% { box-shadow: 0 4px 18px rgba(74,14,26,0.35); }
+        }
+
+        /* ── NAVBAR ADAPTATIVO ── */
+        .navbar {
+            transition: background 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+        }
+
+        .navbar.on-light {
+            background: rgba(250, 247, 242, 0.97);
+            border-bottom: 1px solid rgba(107, 21, 38, 0.12);
+            box-shadow: 0 2px 16px rgba(107,21,38,0.08);
+        }
+
+        .navbar.on-light .navbar-links a {
+            color: var(--burgundy);
+        }
+
+        .navbar.on-light .navbar-links a:hover {
+            color: var(--burgundy-mid);
+        }
+
+        .navbar.on-light .nav-btn {
+            background: var(--burgundy) !important;
+            color: var(--cream) !important;
+        }
+
+        .navbar.on-light .nav-btn:hover {
+            background: var(--burgundy-dark) !important;
+        }
+
+        .navbar.on-light .logo-img {
+            filter: none;
+        }
+
+        .navbar.on-light .hamburger span {
+            background: var(--burgundy);
         }
 
         /* ── SCROLL REVEAL ── */
@@ -835,11 +866,22 @@
         });
     });
 
-    /* ── Navbar shadow on scroll ── */
+    /* ── Navbar adaptativo según el fondo ── */
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        navbar.style.boxShadow = window.scrollY > 60 ? '0 4px 20px rgba(0,0,0,0.35)' : 'none';
-    });
+    const hero   = document.getElementById('inicio');
+
+    function updateNavbar() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        // Si el hero ya pasó (fondo crema debajo), cambia el navbar
+        if (heroBottom <= 0) {
+            navbar.classList.add('on-light');
+        } else {
+            navbar.classList.remove('on-light');
+        }
+    }
+
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar(); // estado inicial
 
     /* ── Scroll reveal ── */
     const observer = new IntersectionObserver(entries => {
