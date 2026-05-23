@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Bar Los Caballos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --burgundy:       #6B1526;
+            --burgundy-dark:  #4A0E1A;
+            --burgundy-mid:   #8B1A2E;
+            --cream:          #F5E3B0;
+            --cream-light:    #FAF7F2;
+            --gold:           #C9A96E;
+            --white:          #FFFFFF;
+            --text-dark:      #1A1A1A;
+            --text-mid:       #555555;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background: var(--cream-light);
+        }
+
+        /* ── LOGO IMG ── */
+        .logo-img {
+            display: block;
+            filter: brightness(0) invert(1) sepia(0.25) saturate(0.8);
+            image-rendering: high-quality;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(74, 14, 26, 0.18);
+            backdrop-filter: blur(22px) saturate(1.4);
+            -webkit-backdrop-filter: blur(22px) saturate(1.4);
+            padding: 0.7rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+            transition: background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .navbar-brand .logo-img {
+            height: 48px;
+            width: auto;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            color: rgba(245, 227, 176, 0.85);
+            text-decoration: none;
+            font-size: 0.92rem;
+            letter-spacing: 0.4px;
+            transition: color 0.25s;
+        }
+
+        .navbar-links a:hover { color: var(--gold); }
+
+        .nav-btn {
+            background: var(--gold) !important;
+            color: var(--burgundy-dark) !important;
+            padding: 0.45rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            transition: background 0.25s !important;
+        }
+
+        .nav-btn:hover {
+            background: var(--cream) !important;
+            color: var(--burgundy-dark) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(155deg,
+                    rgba(74, 14, 26, 0.82) 0%,
+                    rgba(107, 21, 38, 0.76) 55%,
+                    rgba(139, 26, 46, 0.72) 100%),
+                url('hero.jpg') center / cover no-repeat;
+            /* fallback when hero.jpg is missing */
+            background-color: var(--burgundy-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 7rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 280px;
+            background: linear-gradient(to top,
+                var(--cream-light) 0%,
+                rgba(250,247,242,0.85) 30%,
+                rgba(250,247,242,0.4) 60%,
+                transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-logo {
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-logo .logo-img {
+            height: 140px;
+            width: auto;
+            max-width: 400px;
+            margin: 0 auto;
+            filter: brightness(0) invert(1) sepia(0.25) saturate(0.8) drop-shadow(0 2px 14px rgba(0,0,0,0.5));
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--cream);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: rgba(245, 227, 176, 0.75);
+            margin-bottom: 2.8rem;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--burgundy-dark);
+        }
+
+        .btn-gold:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+        }
+
+        .btn-wa {
+            background: var(--cream);
+            color: var(--burgundy-dark);
+            border: 2px solid rgba(201,169,110,0.5);
+        }
+
+        .btn-wa:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--burgundy-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(74,14,26,0.25);
+        }
+
+        /* ── LAYOUT HELPERS ── */
+        .section { padding: 5.5rem 2rem; }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--burgundy);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-header h2.light { color: var(--cream); }
+
+        .divider {
+            width: 52px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0 auto;
+        }
+
+        /* ── SERVICIOS ── */
+        .servicios { background: var(--cream-light); }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(107,21,38,0.08);
+            box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+            transition: all 0.28s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(107,21,38,0.13);
+            border-color: var(--gold);
+        }
+
+        .card-icon {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--burgundy);
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        /* ── CARTA ── */
+        .carta-section {
+            background: var(--cream-light);
+        }
+
+        .carta-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .carta-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--burgundy);
+            margin-bottom: 0.6rem;
+        }
+
+        .carta-text .divider { margin: 0.8rem 0 1.5rem; }
+
+        .carta-text p {
+            color: var(--text-mid);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .carta-card {
+            background: var(--white);
+            border: 1px solid rgba(107,21,38,0.12);
+            border-radius: 14px;
+            padding: 2.8rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(107,21,38,0.08);
+        }
+
+        .carta-card .big-icon {
+            font-size: 3.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .carta-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            margin-bottom: 0.7rem;
+        }
+
+        .carta-card p {
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
+        }
+
+        .carta-badge {
+            display: inline-flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            background: rgba(107,21,38,0.07);
+            color: var(--burgundy);
+            border: 1px solid rgba(107,21,38,0.2);
+            border-radius: 20px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ── CONTACTO ── */
+        .contacto { background: var(--cream-light); }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contacto-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--burgundy);
+            margin-bottom: 1.8rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            font-size: 1.35rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .info-body h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--burgundy);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-body p {
+            font-size: 0.95rem;
+            color: var(--text-mid);
+            line-height: 1.55;
+        }
+
+        .wa-card {
+            background: var(--burgundy);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .wa-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.55rem;
+            color: var(--cream);
+            margin-bottom: 0.8rem;
+        }
+
+        .wa-card p {
+            color: rgba(245,227,176,0.72);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .wa-number {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 5vw, 1.7rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 1.8rem;
+            letter-spacing: 3px;
+            white-space: nowrap;
+            word-break: keep-all;
+            font-variant-numeric: lining-nums tabular-nums;
+            font-feature-settings: "lnum" 1, "tnum" 1;
+        }
+
+        .wa-card .btn-wa {
+            width: 100%;
+            justify-content: center;
+            font-size: 1rem;
+            padding: 1rem;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: linear-gradient(to bottom,
+                var(--cream-light) 0%,
+                var(--burgundy-dark) 10%,
+                var(--burgundy-dark) 100%
+            );
+            color: var(--cream);
+            padding: 4rem 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .footer .logo-img {
+            height: 64px;
+            width: auto;
+            margin: 0 auto 1.2rem;
+            opacity: 0.82;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            color: rgba(245,227,176,0.55);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.25s;
+        }
+
+        .footer-nav a:hover { color: var(--gold); }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: rgba(245,227,176,0.35);
+        }
+
+        /* ── FLOATING WHATSAPP ── */
+        .wa-float {
+            position: fixed;
+            bottom: 1.8rem;
+            right: 1.8rem;
+            z-index: 998;
+            width: 58px;
+            height: 58px;
+            background: var(--cream);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(74,14,26,0.35);
+            animation: pulse-wa 2.5s infinite;
+            transition: all 0.28s;
+        }
+
+        .wa-float:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+            animation: none;
+            box-shadow: 0 6px 24px rgba(74,14,26,0.45);
+        }
+
+        .wa-float svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--burgundy-dark);
+        }
+
+        @keyframes pulse-wa {
+            0%   { box-shadow: 0 4px 18px rgba(74,14,26,0.35); }
+            50%  { box-shadow: 0 4px 28px rgba(74,14,26,0.5), 0 0 0 10px rgba(201,169,110,0.2); }
+            100% { box-shadow: 0 4px 18px rgba(74,14,26,0.35); }
+        }
+
+        /* ── NAVBAR ADAPTATIVO ── */
+        .navbar {
+            transition: background 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease;
+        }
+
+        .navbar.on-light {
+            background: rgba(250, 247, 242, 0.22);
+            backdrop-filter: blur(22px) saturate(1.4);
+            -webkit-backdrop-filter: blur(22px) saturate(1.4);
+            border-bottom: 1px solid rgba(107, 21, 38, 0.08);
+            box-shadow: none;
+        }
+
+        .navbar.on-light .navbar-links a {
+            color: var(--burgundy);
+        }
+
+        .navbar.on-light .navbar-links a:hover {
+            color: var(--burgundy-mid);
+        }
+
+        .navbar.on-light .nav-btn {
+            background: var(--burgundy) !important;
+            color: var(--cream) !important;
+        }
+
+        .navbar.on-light .nav-btn:hover {
+            background: var(--burgundy-dark) !important;
+        }
+
+        .navbar.on-light .logo-img {
+            filter: none;
+        }
+
+        .navbar.on-light .hamburger span {
+            background: var(--burgundy);
+        }
+
+        /* ── MAPA ── */
+        .map-section {
+            margin-top: 3.5rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 50px rgba(74,14,26,0.16);
+            border: 1px solid rgba(201,169,110,0.3);
+        }
+
+        .map-header {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            padding: 1.2rem 1.8rem;
+            background: var(--burgundy);
+        }
+
+        .map-header .map-pin {
+            font-size: 1.7rem;
+            line-height: 1;
+        }
+
+        .map-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--cream-light);
+            margin: 0 0 0.15rem;
+        }
+
+        .map-header p {
+            font-size: 0.83rem;
+            color: rgba(250,247,242,0.72);
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+
+        .map-wrap {
+            width: 100%;
+            height: 380px;
+            display: block;
+            position: relative;
+        }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            filter: saturate(0.88) contrast(1.04);
+        }
+
+        .btn-map {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 1.05rem 1.5rem;
+            background: var(--burgundy-dark);
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .btn-map:hover {
+            background: var(--burgundy);
+            color: var(--cream-light);
+        }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .navbar-links { display: none; }
+            .navbar-links.open,
+            .navbar.on-light .navbar-links.open {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: #3a0a14 !important;
+                padding: 1rem 0;
+                border-bottom: 2px solid rgba(201,169,110,0.35);
+                box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+            }
+            .navbar-links.open li,
+            .navbar.on-light .navbar-links.open li { width: 100%; }
+            .navbar-links.open a,
+            .navbar.on-light .navbar-links.open a {
+                display: block;
+                padding: 0.85rem 2.5rem;
+                font-size: 1rem;
+                color: rgba(245,227,176,0.9) !important;
+            }
+            .navbar-links.open a:hover,
+            .navbar.on-light .navbar-links.open a:hover {
+                color: var(--gold) !important;
+                background: rgba(255,255,255,0.05);
+            }
+            .hamburger { display: flex; }
+            .carta-inner,
+            .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-logo .logo-img { height: 90px; }
+            .section-header h2, .carta-text h2 { font-size: 1.75rem; }
+            .carta-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .carta-text .divider { margin-left: auto; margin-right: auto; }
+            .carta-text > .btn { align-self: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 290px; justify-content: center; }
+            .servicios-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+
+
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav class="navbar" id="navbar">
+    <a href="#inicio" class="navbar-brand">
+        <img src="logo.png" class="logo-img" alt="Bar Los Caballos">
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
+
+    <ul class="navbar-links" id="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#carta">La Carta</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="https://wa.me/34642478768" target="_blank" class="nav-btn">Reservar</a></li>
+    </ul>
+</nav>
+
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" id="inicio">
+    <div class="hero-content">
+
+        <div class="hero-logo">
+            <img src="logo.png" class="logo-img" alt="Bar Los Caballos">
+        </div>
+
+        <p class="hero-tagline">Bar · Restaurante · Celebraciones</p>
+        <p class="hero-sub">
+            Disfruta de nuestra cocina, celebra tus momentos especiales
+            y descubre el sabor de nuestros churros los domingos y festivos.
+        </p>
+
+        <div class="hero-btns">
+            <a href="#carta" class="btn btn-gold">
+                🍽️ Ver la Carta
+            </a>
+            <a href="https://wa.me/34642478768" target="_blank" class="btn btn-wa">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:20px;height:20px;flex-shrink:0">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.856L.057 23.886a.5.5 0 00.61.61l6.03-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.604-.498-5.115-1.373l-.367-.217-3.797.923.943-3.797-.217-.367A9.952 9.952 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+                Contactar por WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SERVICIOS ═══════════════════════════════ -->
+<section class="section servicios" id="servicios">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Nuestros Servicios</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="servicios-grid">
+            <div class="card reveal">
+                <div class="card-icon">💒</div>
+                <h3>Bodas</h3>
+                <p>Tu boda merece el escenario perfecto. Nos encargamos de cada detalle para hacer de tu día un recuerdo inolvidable.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🎊</div>
+                <h3>Comuniones</h3>
+                <p>Celebra el día más especial de tu pequeño con un banquete a la altura de tan emotiva ocasión.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🥂</div>
+                <h3>Celebraciones</h3>
+                <p>Cumpleaños, aniversarios, reuniones de empresa… cualquier excusa es buena para celebrar con nosotros.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🍱</div>
+                <h3>Catering</h3>
+                <p>Llevamos la calidad de nuestra cocina hasta donde tú necesites. Servicio completo para todo tipo de eventos.</p>
+            </div>
+            <div class="card reveal">
+                <div class="card-icon">🥐</div>
+                <h3>Churros</h3>
+                <p>Los domingos y festivos disfruta de nuestros tradicionales churros. ¡El desayuno perfecto en familia!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ CARTA ═══════════════════════════════ -->
+<section class="section carta-section" id="carta">
+    <div class="container">
+        <div class="carta-inner">
+            <div class="carta-text reveal">
+                <h2>Nuestra Carta</h2>
+                <div class="divider"></div>
+                <p>
+                    Explora nuestra carta digital con todos nuestros platos,
+                    tapas, bebidas y especialidades de la casa.
+                    Disponible desde tu móvil o PC, siempre actualizada.
+                </p>
+                <a href="https://dariioacostaa06-glitch.github.io/LosCaballos/"
+                   target="_blank" class="btn btn-gold">
+                    🍽️ Abrir Carta Digital
+                </a>
+            </div>
+
+            <div class="carta-card reveal">
+                <div class="big-icon">📋</div>
+                <h3>Carta Digital</h3>
+                <p>Todos nuestros platos y bebidas en un solo lugar.</p>
+                <div class="carta-badge">
+                    <span class="badge">Tapas</span>
+                    <span class="badge">Raciones</span>
+                    <span class="badge">Bocadillos</span>
+                    <span class="badge">Bebidas</span>
+                </div>
+                <a href="https://dariioacostaa06-glitch.github.io/LosCaballos/"
+                   target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;">
+                    Ver la carta completa →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ CONTACTO ═══════════════════════════════ -->
+<section class="section contacto" id="contacto">
+    <div class="container">
+        <div class="section-header reveal">
+            <h2>Contacto &amp; Reservas</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contacto-grid">
+            <div class="contacto-info reveal">
+                <h3>Ven a visitarnos</h3>
+
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <div class="info-body">
+                        <h4>Dirección</h4>
+                        <p>Avda. Juan Carlos I s/n<br>14520 Fernán Núñez, Córdoba</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">🕐</span>
+                    <div class="info-body">
+                        <h4>Horario</h4>
+                        <p>
+                            Lunes a Viernes: 8:00 – 23:00<br>
+                            Sábados: 9:00 – 00:00<br>
+                            Domingos y Festivos: 9:00 – 16:00
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">📞</span>
+                    <div class="info-body">
+                        <h4>Teléfono</h4>
+                        <p>642 478 768</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-icon">🍽️</span>
+                    <div class="info-body">
+                        <h4>Churros</h4>
+                        <p>Domingos y Festivos — ¡No te los pierdas!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wa-card reveal">
+                <h3>¿Hablamos?</h3>
+                <p>
+                    Contáctanos por WhatsApp para reservas,
+                    consultas sobre el menú o presupuestos
+                    para celebraciones y catering.
+                </p>
+                <span class="wa-number">642&nbsp;478&nbsp;768</span>
+                <a href="https://wa.me/34642478768" target="_blank" class="btn btn-wa">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:20px;height:20px;flex-shrink:0">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.856L.057 23.886a.5.5 0 00.61.61l6.03-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.604-.498-5.115-1.373l-.367-.217-3.797.923.943-3.797-.217-.367A9.952 9.952 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/>
+                    </svg>
+                    Enviar mensaje por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- MAPA GOOGLE -->
+        <div class="map-section reveal">
+            <div class="map-header">
+                <span class="map-pin">📍</span>
+                <div>
+                    <h3>Cómo llegar</h3>
+                    <p>Avda. Juan Carlos I s/n · 14520 Fernán Núñez, Córdoba</p>
+                </div>
+            </div>
+            <div class="map-wrap">
+                <iframe
+                    src="https://maps.google.com/maps?q=Bar+Restaurante+Los+Caballos,+Avda.+Juan+Carlos+I,+14520+Fern%C3%A1n+N%C3%BA%C3%B1ez,+C%C3%B3rdoba&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación de Bar Restaurante Los Caballos">
+                </iframe>
+            </div>
+            <a href="https://www.google.com/maps/dir//Bar+Restaurante+Los+Caballos,+Avda.+Juan+Carlos+I+s%2Fn,+14520+Fern%C3%A1n+N%C3%BA%C3%B1ez,+C%C3%B3rdoba/@37.6615751,-4.7174072,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd6d162a0a06003b:0xf55616138411eeb7!2m2!1d-4.727733!2d37.667509?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+               target="_blank" class="btn-map">
+                🗺️ &nbsp;Abrir ruta en Google Maps
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="footer">
+    <img src="logo.png" class="logo-img" alt="Bar Los Caballos">
+    <ul class="footer-nav">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#carta">La Carta</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="https://wa.me/34642478768" target="_blank">WhatsApp</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 Bar Los Caballos · Todos los derechos reservados</p>
+</footer>
+
+
+<!-- ═══════════════════════════════ FLOATING WHATSAPP ═══════════════════════════════ -->
+<a href="https://wa.me/34642478768" class="wa-float" target="_blank" title="Escribirnos por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.523 5.856L.057 23.886a.5.5 0 00.61.61l6.03-1.466A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.604-.498-5.115-1.373l-.367-.217-3.797.923.943-3.797-.217-.367A9.952 9.952 0 012 12c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+</a>
+
+
+<script>
+    /* ── Hamburger menu ── */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    /* ── Smooth scroll ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    /* ── Navbar adaptativo según el fondo ── */
+    const navbar = document.getElementById('navbar');
+    const hero   = document.getElementById('inicio');
+
+    function updateNavbar() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        // Si el hero ya pasó (fondo crema debajo), cambia el navbar
+        if (heroBottom <= 0) {
+            navbar.classList.add('on-light');
+        } else {
+            navbar.classList.remove('on-light');
+        }
+    }
+
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar(); // estado inicial
+
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
