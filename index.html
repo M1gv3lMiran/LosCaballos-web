@@ -681,15 +681,18 @@
                 position: absolute;
                 top: 100%;
                 left: 0; right: 0;
-                background: rgba(74,14,26,0.88);
-                backdrop-filter: blur(22px) saturate(1.4);
-                -webkit-backdrop-filter: blur(22px) saturate(1.4);
+                background: rgba(58,10,20,0.96);
                 padding: 1rem 0;
-                border-bottom: 1px solid rgba(201,169,110,0.18);
+                border-bottom: 2px solid rgba(201,169,110,0.3);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             }
             .navbar.on-light .navbar-links.open {
-                background: rgba(250,247,242,0.92);
-                border-bottom: 1px solid rgba(107,21,38,0.1);
+                background: rgba(250,247,242,0.97);
+                border-bottom: 2px solid rgba(107,21,38,0.15);
+                box-shadow: 0 8px 24px rgba(107,21,38,0.12);
+            }
+            .navbar.on-light .navbar-links.open a {
+                color: var(--burgundy);
             }
             .navbar-links.open li { width: 100%; }
             .navbar-links.open a {
@@ -702,9 +705,8 @@
             .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
             .hero-logo .logo-img { height: 90px; }
             .section-header h2, .carta-text h2 { font-size: 1.75rem; }
-            .carta-text { text-align: center; }
+            .carta-text { display: flex; flex-direction: column; align-items: center; text-align: center; }
             .carta-text .divider { margin-left: auto; margin-right: auto; }
-            .carta-text .btn { display: inline-flex; }
         }
 
         @media (max-width: 480px) {
