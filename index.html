@@ -674,39 +674,46 @@
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .navbar-links { display: none; }
-            .navbar-links.open {
+            .navbar-links.open,
+            .navbar.on-light .navbar-links.open {
                 display: flex;
                 flex-direction: column;
                 gap: 0;
                 position: absolute;
                 top: 100%;
                 left: 0; right: 0;
-                background: rgba(58,10,20,0.96);
+                background: #3a0a14 !important;
                 padding: 1rem 0;
-                border-bottom: 2px solid rgba(201,169,110,0.3);
-                box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+                border-bottom: 2px solid rgba(201,169,110,0.35);
+                box-shadow: 0 8px 28px rgba(0,0,0,0.35);
             }
-            .navbar.on-light .navbar-links.open {
-                background: rgba(250,247,242,0.97);
-                border-bottom: 2px solid rgba(107,21,38,0.15);
-                box-shadow: 0 8px 24px rgba(107,21,38,0.12);
-            }
+            .navbar-links.open li,
+            .navbar.on-light .navbar-links.open li { width: 100%; }
+            .navbar-links.open a,
             .navbar.on-light .navbar-links.open a {
-                color: var(--burgundy);
-            }
-            .navbar-links.open li { width: 100%; }
-            .navbar-links.open a {
                 display: block;
-                padding: 0.8rem 2.5rem;
+                padding: 0.85rem 2.5rem;
                 font-size: 1rem;
+                color: rgba(245,227,176,0.9) !important;
+            }
+            .navbar-links.open a:hover,
+            .navbar.on-light .navbar-links.open a:hover {
+                color: var(--gold) !important;
+                background: rgba(255,255,255,0.05);
             }
             .hamburger { display: flex; }
             .carta-inner,
             .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
             .hero-logo .logo-img { height: 90px; }
             .section-header h2, .carta-text h2 { font-size: 1.75rem; }
-            .carta-text { display: flex; flex-direction: column; align-items: center; text-align: center; }
+            .carta-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
             .carta-text .divider { margin-left: auto; margin-right: auto; }
+            .carta-text > .btn { align-self: center; }
         }
 
         @media (max-width: 480px) {
