@@ -29,9 +29,11 @@
             background: var(--cream-light);
         }
 
-        /* ── LOGO SVG ── */
-        .logo-svg {
+        /* ── LOGO IMG ── */
+        .logo-img {
             display: block;
+            filter: brightness(0) invert(1) sepia(0.25) saturate(0.8);
+            image-rendering: high-quality;
         }
 
         /* ── NAVBAR ── */
@@ -55,10 +57,9 @@
             text-decoration: none;
         }
 
-        .navbar-brand .logo-svg {
-            height: 44px;
+        .navbar-brand .logo-img {
+            height: 48px;
             width: auto;
-            color: var(--cream);
         }
 
         .navbar-links {
@@ -149,13 +150,12 @@
             margin-bottom: 1.8rem;
         }
 
-        .hero-logo .logo-svg {
-            height: 130px;
+        .hero-logo .logo-img {
+            height: 140px;
             width: auto;
-            max-width: 380px;
-            color: var(--cream);
+            max-width: 400px;
             margin: 0 auto;
-            filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+            filter: brightness(0) invert(1) sepia(0.25) saturate(0.8) drop-shadow(0 2px 14px rgba(0,0,0,0.5));
         }
 
         .hero-tagline {
@@ -462,11 +462,11 @@
             text-align: center;
         }
 
-        .footer .logo-svg {
-            height: 60px;
+        .footer .logo-img {
+            height: 64px;
             width: auto;
-            color: rgba(245, 227, 176, 0.75);
             margin: 0 auto 1.2rem;
+            opacity: 0.82;
         }
 
         .footer-nav {
@@ -565,7 +565,7 @@
             .hamburger { display: flex; }
             .carta-inner,
             .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .hero-logo .logo-svg { height: 90px; }
+            .hero-logo .logo-img { height: 90px; }
             .section-header h2, .carta-text h2 { font-size: 1.75rem; }
         }
 
@@ -578,91 +578,12 @@
 </head>
 <body>
 
-<!-- ═══════════ SVG DEFINITIONS (hidden — logo reutilizable) ═══════════ -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-  <symbol id="logo-loscaballos" viewBox="0 0 310 120">
-
-    <!-- ── CABALLO (silueta de caballo encabritado) ── -->
-    <!-- Cuerpo principal -->
-    <ellipse cx="42" cy="69" rx="15" ry="22" transform="rotate(-22 42 69)" fill="currentColor"/>
-    <!-- Grupa / cuartos traseros -->
-    <ellipse cx="34" cy="78" rx="11" ry="9" transform="rotate(-10 34 78)" fill="currentColor"/>
-
-    <!-- Cuello (trazo grueso) -->
-    <path d="M50,54 C52,46 54,37 57,27" stroke="currentColor" stroke-width="11"
-          stroke-linecap="round" fill="none"/>
-
-    <!-- Cabeza -->
-    <ellipse cx="63" cy="19" rx="10" ry="14" transform="rotate(18 63 19)" fill="currentColor"/>
-
-    <!-- Oreja -->
-    <polygon points="57,10 53,3 60,7" fill="currentColor"/>
-
-    <!-- Belfo (morro) -->
-    <ellipse cx="71" cy="26" rx="5" ry="6" fill="currentColor"/>
-
-    <!-- Ojo (detalle blanco) -->
-    <circle cx="65" cy="15" r="1.8" fill="white"/>
-
-    <!-- Pata delantera izquierda (levantada, doblada) -->
-    <path d="M47,53 L40,40 L34,29 L30,24" stroke="currentColor" stroke-width="6"
-          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <!-- Casco delantero izq. -->
-    <ellipse cx="29" cy="22" rx="4" ry="3" transform="rotate(-35 29 22)" fill="currentColor"/>
-
-    <!-- Pata delantera derecha (levantada) -->
-    <path d="M51,55 L48,42 L46,30" stroke="currentColor" stroke-width="6"
-          stroke-linecap="round" fill="none"/>
-    <!-- Casco delantero der. -->
-    <ellipse cx="45" cy="28" rx="4" ry="3" transform="rotate(-25 45 28)" fill="currentColor"/>
-
-    <!-- Pata trasera izquierda -->
-    <path d="M32,84 L28,98 L26,112" stroke="currentColor" stroke-width="7"
-          stroke-linecap="round" fill="none"/>
-    <ellipse cx="25" cy="114" rx="5" ry="3" fill="currentColor"/>
-
-    <!-- Pata trasera derecha -->
-    <path d="M44,85 L44,100 L45,113" stroke="currentColor" stroke-width="7"
-          stroke-linecap="round" fill="none"/>
-    <ellipse cx="45" cy="115" rx="5" ry="3" fill="currentColor"/>
-
-    <!-- Cola -->
-    <path d="M30,73 C22,66 12,64 10,72 C8,80 13,90 21,86"
-          stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/>
-
-    <!-- ── TEXTO "Los" en script elegante ── -->
-    <text x="100" y="58"
-          font-family="'Dancing Script','Palatino Linotype',Georgia,serif"
-          font-size="50" font-weight="700"
-          fill="currentColor">Los</text>
-
-    <!-- Trazo decorativo bajo "Los" -->
-    <path d="M98,67 Q145,79 198,66" stroke="currentColor" stroke-width="1.4"
-          fill="none" stroke-linecap="round"/>
-
-    <!-- "Bar" pequeño en script -->
-    <text x="246" y="60"
-          font-family="'Dancing Script','Palatino Linotype',Georgia,serif"
-          font-size="18" font-weight="600"
-          fill="currentColor">Bar</text>
-
-    <!-- ── TEXTO "Caballos" en serif negrita ── -->
-    <text x="97" y="104"
-          font-family="'Playfair Display','Palatino Linotype',Georgia,serif"
-          font-size="36" font-weight="700"
-          letter-spacing="2"
-          fill="currentColor">Caballos</text>
-
-  </symbol>
-</svg>
 
 
 <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
 <nav class="navbar" id="navbar">
     <a href="#inicio" class="navbar-brand">
-        <svg class="logo-svg" aria-label="Bar Los Caballos">
-            <use href="#logo-loscaballos"/>
-        </svg>
+        <img src="logo.png" class="logo-img" alt="Bar Los Caballos">
     </a>
 
     <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -684,9 +605,7 @@
     <div class="hero-content">
 
         <div class="hero-logo">
-            <svg class="logo-svg" aria-label="Bar Los Caballos">
-                <use href="#logo-loscaballos"/>
-            </svg>
+            <img src="logo.png" class="logo-img" alt="Bar Los Caballos">
         </div>
 
         <p class="hero-tagline">Bar · Restaurante · Celebraciones</p>
@@ -860,9 +779,7 @@
 
 <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer class="footer">
-    <svg class="logo-svg" aria-label="Bar Los Caballos">
-        <use href="#logo-loscaballos"/>
-    </svg>
+    <img src="logo.png" class="logo-img" alt="Bar Los Caballos">
     <ul class="footer-nav">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
