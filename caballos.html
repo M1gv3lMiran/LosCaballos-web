@@ -44,15 +44,13 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            background: rgba(74, 14, 26, 0.18);
-            backdrop-filter: blur(22px) saturate(1.4);
-            -webkit-backdrop-filter: blur(22px) saturate(1.4);
+            background: var(--burgundy-dark);
             padding: 0.7rem 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(201, 169, 110, 0.12);
-            transition: background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+            border-bottom: none;
+            transition: background 0.45s ease;
         }
 
         .navbar-brand {
@@ -557,10 +555,8 @@
         }
 
         .navbar.on-light {
-            background: rgba(250, 247, 242, 0.22);
-            backdrop-filter: blur(22px) saturate(1.4);
-            -webkit-backdrop-filter: blur(22px) saturate(1.4);
-            border-bottom: 1px solid rgba(107, 21, 38, 0.08);
+            background: var(--cream-light);
+            border-bottom: none;
             box-shadow: none;
         }
 
@@ -677,32 +673,37 @@
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .navbar-links { display: none; }
-            .navbar-links.open,
-            .navbar.on-light .navbar-links.open {
+            .navbar-links.open {
                 display: flex;
                 flex-direction: column;
                 gap: 0;
                 position: absolute;
                 top: 100%;
                 left: 0; right: 0;
-                background: #3a0a14 !important;
+                background: var(--burgundy-dark);
                 padding: 1rem 0;
-                border-bottom: 2px solid rgba(201,169,110,0.35);
-                box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+                border-bottom: none;
             }
-            .navbar-links.open li,
-            .navbar.on-light .navbar-links.open li { width: 100%; }
-            .navbar-links.open a,
-            .navbar.on-light .navbar-links.open a {
+            .navbar.on-light .navbar-links.open {
+                background: var(--cream-light);
+            }
+            .navbar-links.open li { width: 100%; }
+            .navbar-links.open a {
                 display: block;
                 padding: 0.85rem 2.5rem;
                 font-size: 1rem;
-                color: rgba(245,227,176,0.9) !important;
+                color: rgba(245,227,176,0.9);
             }
-            .navbar-links.open a:hover,
+            .navbar.on-light .navbar-links.open a {
+                color: var(--burgundy);
+            }
+            .navbar-links.open a:hover {
+                background: rgba(255,255,255,0.06);
+                color: var(--gold);
+            }
             .navbar.on-light .navbar-links.open a:hover {
-                color: var(--gold) !important;
-                background: rgba(255,255,255,0.05);
+                background: rgba(107,21,38,0.06);
+                color: var(--burgundy-dark);
             }
             .hamburger { display: flex; }
             .carta-inner,
