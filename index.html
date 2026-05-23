@@ -8,7 +8,7 @@
     <meta http-equiv="Expires" content="0">
     <title>Bar Los Caballos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,6 +37,56 @@
             display: block;
             filter: brightness(0) invert(1) sepia(0.25) saturate(0.8);
             image-rendering: high-quality;
+        }
+
+        /* ── BRAND BLOCK (logo + text) ── */
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            line-height: 1;
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1;
+        }
+        .brand-text .brand-sup {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.6em;
+            text-transform: uppercase;
+            color: rgba(245, 227, 176, 0.7);
+            padding-left: 2px;
+            margin-bottom: 0.25rem;
+        }
+        .brand-text .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: rgba(245, 227, 176, 0.95);
+        }
+        /* On light navbar */
+        .navbar.on-light .brand-text .brand-sup { color: rgba(74, 14, 26, 0.55); }
+        .navbar.on-light .brand-text .brand-name { color: var(--burgundy-dark); }
+        /* Hero brand */
+        .hero-brand { flex-direction: column; gap: 0.4rem; align-items: center; }
+        .hero-brand .brand-text { align-items: center; }
+        .hero-brand .brand-sup { font-size: 0.85rem; letter-spacing: 0.7em; color: rgba(245, 227, 176, 0.8); }
+        .hero-brand .brand-name { font-size: 2.4rem; letter-spacing: 0.1em; }
+        /* Footer brand */
+        .footer-brand { flex-direction: column; gap: 0.4rem; align-items: center; margin-bottom: 1rem; }
+        .footer-brand .brand-text { align-items: center; }
+        .footer-brand .brand-sup { color: rgba(245, 227, 176, 0.6); }
+        .footer-brand .brand-name { font-size: 1.4rem; }
+        @media (max-width: 768px) {
+            .brand-text .brand-name { font-size: 1.05rem; }
+            .brand-text .brand-sup { font-size: 0.55rem; letter-spacing: 0.5em; }
+            .hero-brand .brand-name { font-size: 1.9rem; }
+            .hero-brand .brand-sup { font-size: 0.75rem; }
         }
 
         /* ── NAVBAR ── */
@@ -733,8 +783,12 @@
 
 <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
 <nav class="navbar" id="navbar">
-    <a href="#inicio" class="navbar-brand">
+    <a href="#inicio" class="navbar-brand brand-block">
         <img src="logo.svg" class="logo-img" alt="Bar Los Caballos">
+        <div class="brand-text">
+            <span class="brand-sup">Bar</span>
+            <span class="brand-name">Los Caballos</span>
+        </div>
     </a>
 
     <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -755,8 +809,12 @@
 <section class="hero" id="inicio">
     <div class="hero-content">
 
-        <div class="hero-logo">
+        <div class="hero-logo brand-block hero-brand">
             <img src="logo.svg" class="logo-img" alt="Bar Los Caballos">
+            <div class="brand-text">
+                <span class="brand-sup">Bar</span>
+                <span class="brand-name">Los Caballos</span>
+            </div>
         </div>
 
         <p class="hero-tagline">Bar · Restaurante · Celebraciones</p>
@@ -954,7 +1012,13 @@
 
 <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer class="footer">
-    <img src="logo.svg" class="logo-img" alt="Bar Los Caballos">
+    <div class="brand-block footer-brand">
+        <img src="logo.svg" class="logo-img" alt="Bar Los Caballos">
+        <div class="brand-text">
+            <span class="brand-sup">Bar</span>
+            <span class="brand-name">Los Caballos</span>
+        </div>
+    </div>
     <ul class="footer-nav">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
