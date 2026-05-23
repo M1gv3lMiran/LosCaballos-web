@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar Los Caballos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -29,6 +29,11 @@
             background: var(--cream-light);
         }
 
+        /* ── LOGO SVG ── */
+        .logo-svg {
+            display: block;
+        }
+
         /* ── NAVBAR ── */
         .navbar {
             position: fixed;
@@ -36,7 +41,7 @@
             z-index: 1000;
             background: rgba(74, 14, 26, 0.96);
             backdrop-filter: blur(12px);
-            padding: 0.85rem 2.5rem;
+            padding: 0.7rem 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -47,20 +52,12 @@
         .navbar-brand {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
             text-decoration: none;
         }
 
-        .navbar-brand img {
-            height: 42px;
-            filter: brightness(0) invert(1);
-            object-fit: contain;
-        }
-
-        .navbar-brand .fallback-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            font-style: italic;
+        .navbar-brand .logo-svg {
+            height: 44px;
+            width: auto;
             color: var(--cream);
         }
 
@@ -119,10 +116,12 @@
             min-height: 100vh;
             background:
                 linear-gradient(155deg,
-                    rgba(74, 14, 26, 0.97) 0%,
-                    rgba(107, 21, 38, 0.94) 55%,
-                    rgba(139, 26, 46, 0.92) 100%),
-                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                    rgba(74, 14, 26, 0.82) 0%,
+                    rgba(107, 21, 38, 0.76) 55%,
+                    rgba(139, 26, 46, 0.72) 100%),
+                url('hero.jpg') center / cover no-repeat;
+            /* fallback when hero.jpg is missing */
+            background-color: var(--burgundy-dark);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -143,36 +142,20 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 680px;
+            max-width: 700px;
         }
 
-        .hero-logo-wrap {
+        .hero-logo {
             margin-bottom: 1.8rem;
         }
 
-        .hero-logo-wrap img {
-            max-width: 300px;
-            width: 100%;
-            filter: brightness(0) invert(1);
-        }
-
-        .hero-logo-fallback {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            font-style: italic;
+        .hero-logo .logo-svg {
+            height: 130px;
+            width: auto;
+            max-width: 380px;
             color: var(--cream);
-            line-height: 1;
-        }
-
-        .hero-logo-fallback span {
-            display: block;
-            font-size: 1.1rem;
-            font-style: normal;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-top: 0.3rem;
-            font-weight: 300;
+            margin: 0 auto;
+            filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
         }
 
         .hero-tagline {
@@ -187,7 +170,7 @@
 
         .hero-sub {
             font-size: 1.05rem;
-            color: rgba(245, 227, 176, 0.72);
+            color: rgba(245, 227, 176, 0.75);
             margin-bottom: 2.8rem;
             max-width: 460px;
             margin-left: auto;
@@ -238,19 +221,6 @@
             background: #1DA954;
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(37,211,102,0.35);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--cream);
-            border: 2px solid rgba(245,227,176,0.6);
-        }
-
-        .btn-outline:hover {
-            background: var(--cream);
-            color: var(--burgundy-dark);
-            border-color: var(--cream);
-            transform: translateY(-2px);
         }
 
         /* ── LAYOUT HELPERS ── */
@@ -492,21 +462,11 @@
             text-align: center;
         }
 
-        .footer-logo img {
-            height: 48px;
-            filter: brightness(0) invert(1);
-            opacity: 0.8;
-            margin-bottom: 1.2rem;
-        }
-
-        .footer-logo .fallback-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--cream);
-            opacity: 0.8;
-            margin-bottom: 1.2rem;
-            display: block;
+        .footer .logo-svg {
+            height: 60px;
+            width: auto;
+            color: rgba(245, 227, 176, 0.75);
+            margin: 0 auto 1.2rem;
         }
 
         .footer-nav {
@@ -603,11 +563,9 @@
                 font-size: 1rem;
             }
             .hamburger { display: flex; }
-
             .carta-inner,
             .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .hero-logo-wrap img { max-width: 220px; }
-            .hero-logo-fallback { font-size: 2.4rem; }
+            .hero-logo .logo-svg { height: 90px; }
             .section-header h2, .carta-text h2 { font-size: 1.75rem; }
         }
 
@@ -620,12 +578,91 @@
 </head>
 <body>
 
+<!-- ═══════════ SVG DEFINITIONS (hidden — logo reutilizable) ═══════════ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="logo-loscaballos" viewBox="0 0 310 120">
+
+    <!-- ── CABALLO (silueta de caballo encabritado) ── -->
+    <!-- Cuerpo principal -->
+    <ellipse cx="42" cy="69" rx="15" ry="22" transform="rotate(-22 42 69)" fill="currentColor"/>
+    <!-- Grupa / cuartos traseros -->
+    <ellipse cx="34" cy="78" rx="11" ry="9" transform="rotate(-10 34 78)" fill="currentColor"/>
+
+    <!-- Cuello (trazo grueso) -->
+    <path d="M50,54 C52,46 54,37 57,27" stroke="currentColor" stroke-width="11"
+          stroke-linecap="round" fill="none"/>
+
+    <!-- Cabeza -->
+    <ellipse cx="63" cy="19" rx="10" ry="14" transform="rotate(18 63 19)" fill="currentColor"/>
+
+    <!-- Oreja -->
+    <polygon points="57,10 53,3 60,7" fill="currentColor"/>
+
+    <!-- Belfo (morro) -->
+    <ellipse cx="71" cy="26" rx="5" ry="6" fill="currentColor"/>
+
+    <!-- Ojo (detalle blanco) -->
+    <circle cx="65" cy="15" r="1.8" fill="white"/>
+
+    <!-- Pata delantera izquierda (levantada, doblada) -->
+    <path d="M47,53 L40,40 L34,29 L30,24" stroke="currentColor" stroke-width="6"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Casco delantero izq. -->
+    <ellipse cx="29" cy="22" rx="4" ry="3" transform="rotate(-35 29 22)" fill="currentColor"/>
+
+    <!-- Pata delantera derecha (levantada) -->
+    <path d="M51,55 L48,42 L46,30" stroke="currentColor" stroke-width="6"
+          stroke-linecap="round" fill="none"/>
+    <!-- Casco delantero der. -->
+    <ellipse cx="45" cy="28" rx="4" ry="3" transform="rotate(-25 45 28)" fill="currentColor"/>
+
+    <!-- Pata trasera izquierda -->
+    <path d="M32,84 L28,98 L26,112" stroke="currentColor" stroke-width="7"
+          stroke-linecap="round" fill="none"/>
+    <ellipse cx="25" cy="114" rx="5" ry="3" fill="currentColor"/>
+
+    <!-- Pata trasera derecha -->
+    <path d="M44,85 L44,100 L45,113" stroke="currentColor" stroke-width="7"
+          stroke-linecap="round" fill="none"/>
+    <ellipse cx="45" cy="115" rx="5" ry="3" fill="currentColor"/>
+
+    <!-- Cola -->
+    <path d="M30,73 C22,66 12,64 10,72 C8,80 13,90 21,86"
+          stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+    <!-- ── TEXTO "Los" en script elegante ── -->
+    <text x="100" y="58"
+          font-family="'Dancing Script','Palatino Linotype',Georgia,serif"
+          font-size="50" font-weight="700"
+          fill="currentColor">Los</text>
+
+    <!-- Trazo decorativo bajo "Los" -->
+    <path d="M98,67 Q145,79 198,66" stroke="currentColor" stroke-width="1.4"
+          fill="none" stroke-linecap="round"/>
+
+    <!-- "Bar" pequeño en script -->
+    <text x="246" y="60"
+          font-family="'Dancing Script','Palatino Linotype',Georgia,serif"
+          font-size="18" font-weight="600"
+          fill="currentColor">Bar</text>
+
+    <!-- ── TEXTO "Caballos" en serif negrita ── -->
+    <text x="97" y="104"
+          font-family="'Playfair Display','Palatino Linotype',Georgia,serif"
+          font-size="36" font-weight="700"
+          letter-spacing="2"
+          fill="currentColor">Caballos</text>
+
+  </symbol>
+</svg>
+
+
 <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
 <nav class="navbar" id="navbar">
     <a href="#inicio" class="navbar-brand">
-        <img src="logo.png" alt="Los Caballos Bar"
-             onerror="this.style.display='none'; document.querySelector('.navbar-brand .fallback-text').style.display='block'">
-        <span class="fallback-text" style="display:none">Los Caballos</span>
+        <svg class="logo-svg" aria-label="Bar Los Caballos">
+            <use href="#logo-loscaballos"/>
+        </svg>
     </a>
 
     <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -641,16 +678,15 @@
     </ul>
 </nav>
 
+
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section class="hero" id="inicio">
     <div class="hero-content">
-        <div class="hero-logo-wrap">
-            <img src="logo.png" alt="Bar Los Caballos"
-                 onerror="this.style.display='none'; document.querySelector('.hero-logo-fallback').style.display='block'">
-            <div class="hero-logo-fallback" style="display:none">
-                Los Caballos
-                <span>Bar &amp; Restaurante</span>
-            </div>
+
+        <div class="hero-logo">
+            <svg class="logo-svg" aria-label="Bar Los Caballos">
+                <use href="#logo-loscaballos"/>
+            </svg>
         </div>
 
         <p class="hero-tagline">Bar · Restaurante · Celebraciones</p>
@@ -673,6 +709,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- ═══════════════════════════════ SERVICIOS ═══════════════════════════════ -->
 <section class="section servicios" id="servicios">
@@ -711,6 +748,7 @@
     </div>
 </section>
 
+
 <!-- ═══════════════════════════════ CARTA ═══════════════════════════════ -->
 <section class="section carta-section" id="carta">
     <div class="container">
@@ -748,6 +786,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- ═══════════════════════════════ CONTACTO ═══════════════════════════════ -->
 <section class="section contacto" id="contacto">
@@ -818,13 +857,12 @@
     </div>
 </section>
 
+
 <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer class="footer">
-    <div class="footer-logo">
-        <img src="logo.png" alt="Los Caballos Bar"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-        <span class="fallback-text" style="display:none">Los Caballos</span>
-    </div>
+    <svg class="logo-svg" aria-label="Bar Los Caballos">
+        <use href="#logo-loscaballos"/>
+    </svg>
     <ul class="footer-nav">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
@@ -835,6 +873,7 @@
     <p class="footer-copy">© 2025 Bar Los Caballos · Todos los derechos reservados</p>
 </footer>
 
+
 <!-- ═══════════════════════════════ FLOATING WHATSAPP ═══════════════════════════════ -->
 <a href="https://wa.me/34642478768" class="wa-float" target="_blank" title="Escribirnos por WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -843,18 +882,13 @@
     </svg>
 </a>
 
+
 <script>
     /* ── Hamburger menu ── */
     const hamburger = document.getElementById('hamburger');
     const navLinks  = document.getElementById('nav-links');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-    });
-
-    navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => navLinks.classList.remove('open'));
-    });
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
     /* ── Smooth scroll ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -866,24 +900,18 @@
         });
     });
 
-    /* ── Navbar scroll shadow ── */
+    /* ── Navbar shadow on scroll ── */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        navbar.style.boxShadow = window.scrollY > 60
-            ? '0 4px 20px rgba(0,0,0,0.35)'
-            : 'none';
+        navbar.style.boxShadow = window.scrollY > 60 ? '0 4px 20px rgba(0,0,0,0.35)' : 'none';
     });
 
     /* ── Scroll reveal ── */
     const observer = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                observer.unobserve(e.target);
-            }
+            if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
         });
     }, { threshold: 0.12 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
